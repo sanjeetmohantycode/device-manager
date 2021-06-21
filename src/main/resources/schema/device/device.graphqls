@@ -28,7 +28,7 @@ type DeviceOwner {
 type Query {
     findDeviceById(orgId:String,id: String): Device
     devicesByOrganization(orgId:String): [Device]
-    allDeviceList(id: String): Device
+    allDeviceList(orgId:String): [Device]
 }
 
 type Mutation {
