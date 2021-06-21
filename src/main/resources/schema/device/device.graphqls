@@ -1,0 +1,25 @@
+type Device {
+    id: ID!
+    orgId: String!
+    imei: String!
+    available: Boolean
+    deviceDetail: DeviceDetail
+}
+
+type DeviceDetail {
+    deviceModel: String
+}
+
+type Query {
+    findDeviceById(orgId:String,id: String): Device
+    devicesByOrganization(orgId:String): [Device]
+    allDeviceList(id: String): Device
+}
+
+type Mutation {
+    addDevice(input: CreateDeviceRequest): Device!
+    importDevices(input: [CreateDeviceRequest]): [Device!]!
+    updateDevice(input: UpdateDeviceRequest): Device!
+    disableDevice(input: DisableDevice ) : String
+    deleteDevice(input: DeleteDevice) : String
+}

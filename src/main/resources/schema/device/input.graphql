@@ -1,0 +1,22 @@
+input CreateDeviceRequest {
+    orgId: String!
+    imei: String!
+    available: Boolean
+}
+
+input UpdateDeviceRequest {
+    id: ID!
+    orgId: String!
+    imei: String!
+    available: Boolean
+}
+
+input DisableDevice {
+    id: ID!
+    orgId: String!
+}
+
+input DeleteDevice {
+    id: ID!
+    orgId: String!
+}
