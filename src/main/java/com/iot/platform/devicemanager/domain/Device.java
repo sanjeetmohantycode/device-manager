@@ -26,30 +26,25 @@ public class Device {
     @Id
     private String id;
 
-    @Column(nullable = false, length = 25, columnDefinition = "Organization unique id")
+    @Column(nullable = false, length = 25)
     private String orgId;
 
-    @Column(columnDefinition = "Imei number of the device")
     private String imei;
 
-    @Column(columnDefinition = "true if device is available for mapping else false")
     private Boolean available;
 
-    @JoinColumn(columnDefinition = "Additional details of device")
+    @JoinColumn
     @OneToOne(fetch = javax.persistence.FetchType.LAZY)
     private DeviceDetail deviceDetail;
 
-    @JoinColumn(columnDefinition = "Owner Id for the device.")
+    @JoinColumn
     @ManyToOne(fetch = javax.persistence.FetchType.LAZY)
     private DeviceOwner deviceOwner;
 
-    @Column(columnDefinition = "Date from when the device will be effective")
     private OffsetDateTime effectiveBeginDate;
 
-    @Column(columnDefinition = "Date when the device will be deactivated")
     private OffsetDateTime effectiveEndDate;
 
-    @Column(columnDefinition = "Shows if a devie is disabled.")
     private Boolean disableDevice;
 
     @Override

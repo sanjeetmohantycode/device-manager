@@ -1,5 +1,6 @@
 package com.iot.platform.devicemanager.domain;
 
+import java.time.OffsetDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,23 +21,27 @@ import lombok.Setter;
 @Setter
 @Builder
 public class DeviceDetail {
-    @Column(nullable = false, columnDefinition = "Unique Id")
+    @Column(nullable = false)
     @Id
     private String id;
 
-    @Column(nullable = false, length = 25, columnDefinition = "Organization Id")
+    @Column(nullable = false, length = 25)
     private String orgId;
 
-    @Column(length = 25, columnDefinition = "Model ex: 3G|4G|5G")
+    @Column(length = 25)
     private String deviceModel;
 
     @JoinColumn
     @OneToOne(orphanRemoval = true)
     private Device device;
 
+    private OffsetDateTime manufaureDate;
+
+    private String vendor;
+
     @Override
     public String toString() {
-        return "DeviceDetail{" + "id='" + id + "'," + "orgId='" + orgId + "'," + "deviceModel='" + deviceModel + "'," + "device='" + device + "'" + "}";
+        return "DeviceDetail{" + "id='" + id + "'," +"orgId='" + orgId + "'," +"deviceModel='" + deviceModel + "'," +"device='" + device + "'," +"manufaureDate='" + manufaureDate + "'," +"vendor='" + vendor + "'" +"}";
     }
 
     @Override
@@ -51,11 +56,13 @@ public class DeviceDetail {
         return java.util.Objects.equals(id, that.id) &&
                 java.util.Objects.equals(orgId, that.orgId) &&
                 java.util.Objects.equals(deviceModel, that.deviceModel) &&
-                java.util.Objects.equals(device, that.device);
+                java.util.Objects.equals(device, that.device) &&
+                java.util.Objects.equals(manufaureDate, that.manufaureDate) &&
+                java.util.Objects.equals(vendor, that.vendor);
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(id, orgId, deviceModel, device);
+        return java.util.Objects.hash(id, orgId, deviceModel, device, manufaureDate, vendor);
     }
 }

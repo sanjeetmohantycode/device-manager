@@ -22,7 +22,7 @@ public class DeviceOwner {
     @Id
     private String id;
 
-    @Column(nullable = false, length = 25, columnDefinition = "Unique Organization Id")
+    @Column(nullable = false, length = 25)
     private String orgId;
 
     @OneToMany(mappedBy = "deviceOwner", fetch = FetchType.EAGER)
