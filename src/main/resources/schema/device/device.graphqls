@@ -8,6 +8,7 @@ type Device {
 
 type DeviceDetail {
     deviceModel: String
+    device: Device
 }
 
 type Query {
