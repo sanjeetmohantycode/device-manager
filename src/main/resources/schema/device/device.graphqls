@@ -4,11 +4,20 @@ type Device {
     imei: String!
     available: Boolean
     deviceDetail: DeviceDetail
+    deviceOwner: DeviceOwner
 }
 
 type DeviceDetail {
+    id: ID!
+    orgId: String!
     deviceModel: String
     device: Device
+}
+
+type DeviceOwner {
+    id: ID!
+    orgId: String!
+    deviceList: [Device]
 }
 
 type Query {
