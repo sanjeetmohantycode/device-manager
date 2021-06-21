@@ -5,6 +5,9 @@ type Device {
     available: Boolean
     deviceDetail: DeviceDetail
     deviceOwner: DeviceOwner
+    effectiveBeginDate: DateTime
+    effectiveEndDate:DateTime
+    disableDevice: Boolean
 }
 
 type DeviceDetail {
@@ -12,6 +15,8 @@ type DeviceDetail {
     orgId: String!
     deviceModel: String
     device: Device
+    manufaureDate: DateTime
+    vendor: String
 }
 
 type DeviceOwner {
@@ -33,3 +38,6 @@ type Mutation {
     disableDevice(input: DisableDevice ) : String
     deleteDevice(input: DeleteDevice) : String
 }
+
+
+scalar DateTime
