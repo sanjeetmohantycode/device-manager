@@ -13,4 +13,6 @@ public interface DeviceService {
     List<Device> getAllDevicesPresentInSystem();
 
     Device registerDevice(CreateDeviceRequest deviceRequest);
+
+    List<Device> importDevices(List<CreateDeviceRequest> deviceRequestList);
 }

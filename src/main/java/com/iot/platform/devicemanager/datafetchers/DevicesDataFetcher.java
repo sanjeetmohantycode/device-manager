@@ -30,4 +30,9 @@ public class DevicesDataFetcher {
     public Device addDevice(@InputArgument CreateDeviceRequest createDeviceRequest) {
         return deviceService.registerDevice(createDeviceRequest);
     }
+
+    @DgsMutation
+    public List<Device> importDevices(@InputArgument List<CreateDeviceRequest> input) {
+        return deviceService.importDevices(input);
+    }
 }

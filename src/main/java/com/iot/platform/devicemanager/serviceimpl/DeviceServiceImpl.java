@@ -43,9 +43,15 @@ public class DeviceServiceImpl implements DeviceService {
                 .imei(deviceRequest.getImei())
                 .orgId(deviceRequest.getOrgId())
                 .available(deviceRequest.getAvailable())
+                .disableDevice(false)
                 .build();
 
         return deviceRepository.save(device);
+    }
+
+    @Override
+    public List<Device> importDevices(List<CreateDeviceRequest> deviceRequestList) {
+        return deviceRequestList.stream().map(this::registerDevice).collect(Collectors.toList());
     }
 
 
