@@ -44,6 +44,8 @@ public class DeviceServiceImpl implements DeviceService {
                 .orgId(deviceRequest.getOrgId())
                 .available(deviceRequest.getAvailable())
                 .disableDevice(false)
+                .effectiveBeginDate(deviceRequest.getEffectiveBeginDate())
+                .effectiveEndDate(deviceRequest.getEffectiveEndDate())
                 .build();
 
         return deviceRepository.save(device);

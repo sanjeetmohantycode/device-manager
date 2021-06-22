@@ -2,11 +2,13 @@
   {
     "orgId": "asiczen-1",
     "imei": "9861927841",
-    "available": true
+    "available": true,
+    "disableDevice": false
   },
   {
     "orgId": "asiczen-2",
     "imei": "9861927842",
-    "available": true
+    "available": true,
+    "disableDevice": false
   }
 ]

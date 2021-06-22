@@ -40,7 +40,9 @@ class DevicesDataFetcherTest {
         GraphQLQueryRequest graphQLQueryRequestFetchObject = new GraphQLQueryRequest(DevicesGraphQLQuery.newRequest().orgId("asiczen").build(),new AddDeviceProjectionRoot().orgId());
         List<Device> deviceList = dgsQueryExecutor.executeAndExtractJsonPathAsObject(graphQLQueryRequestFetchObject.serialize(),"data.devices[*]",new TypeRef<List<Device>>() {});
 
-        assertThat(deviceList.size()).isEqualTo(1);
+        // Count is 3 as there are 2 seed data imported as part of application start up.
+        assertThat(deviceList.size()).isEqualTo(3);
+
     }
 
     @Test

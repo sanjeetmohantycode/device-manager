@@ -2,6 +2,9 @@ input CreateDeviceRequest {
     orgId: String!
     imei: String!
     available: Boolean
+    effectiveBeginDate: DateTime
+    effectiveEndDate:DateTime
+    disableDevice: Boolean
 }
 
 input UpdateDeviceRequest {
