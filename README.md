@@ -10,3 +10,4 @@ Refer sample_graphql_queries directory for exaples.
 Tech Stack:
 1. Java 11
 2. Spring boot graphQl
+3. Postgres (any relational database should work)
