@@ -25,7 +25,6 @@ class DevicesDataFetcherTest {
     DgsQueryExecutor dgsQueryExecutor;
 
    @Test
-    @Order(2)
     void addDevice() {
         CreateDeviceRequest device = CreateDeviceRequest.newBuilder().orgId("asiczen").imei("987654321").available(true).build();
         GraphQLQueryRequest graphQLQueryRequest = new GraphQLQueryRequest(AddDeviceGraphQLQuery.newRequest()
@@ -46,7 +45,6 @@ class DevicesDataFetcherTest {
     }
 
     @Test
-    @Order(1)
     void addDeviceMultipleDevices() {
         CreateDeviceRequest device = CreateDeviceRequest.newBuilder().orgId("asiczen-case2").imei("987654321").available(true).build();
         GraphQLQueryRequest graphQLQueryRequest = new GraphQLQueryRequest(AddDeviceGraphQLQuery.newRequest()
