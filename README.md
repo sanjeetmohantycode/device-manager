@@ -5,7 +5,7 @@ How to run the project ?
 1. gradlew clean build
 2. gradlew run
 
-Refer sample_graphql_queries directory for exaples.
+Refer sample_graphql_queries directory for examples.
 
 Tech Stack:
 1. Java 11
