@@ -10,6 +10,7 @@ import com.netflix.graphql.dgs.DgsQueryExecutor;
 import com.netflix.graphql.dgs.client.codegen.GraphQLQueryRequest;
 import graphql.ExecutionResult;
 import java.util.List;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +24,8 @@ class DevicesDataFetcherTest {
     @Autowired
     DgsQueryExecutor dgsQueryExecutor;
 
-    @Test
+   @Test
+    @Order(2)
     void addDevice() {
         CreateDeviceRequest device = CreateDeviceRequest.newBuilder().orgId("asiczen").imei("987654321").available(true).build();
         GraphQLQueryRequest graphQLQueryRequest = new GraphQLQueryRequest(AddDeviceGraphQLQuery.newRequest()
@@ -41,5 +43,21 @@ class DevicesDataFetcherTest {
         List<Device> deviceList = dgsQueryExecutor.executeAndExtractJsonPathAsObject(graphQLQueryRequestFetchObject.serialize(),"data.devices[*]",new TypeRef<List<Device>>() {});
 
         assertThat(deviceList.size()).isEqualTo(1);
+    }
+
+    @Test
+    @Order(1)
+    void addDeviceMultipleDevices() {
+        CreateDeviceRequest device = CreateDeviceRequest.newBuilder().orgId("asiczen-case2").imei("987654321").available(true).build();
+        GraphQLQueryRequest graphQLQueryRequest = new GraphQLQueryRequest(AddDeviceGraphQLQuery.newRequest()
+                .createDeviceRequest(device).build(),
+                new AddDeviceProjectionRoot().orgId().imei().available());
+        ExecutionResult executionResult = dgsQueryExecutor.execute(graphQLQueryRequest.serialize());
+        assertThat(executionResult.getErrors()).isEmpty();
+
+        GraphQLQueryRequest graphQLQueryRequestFetch = new GraphQLQueryRequest(DevicesGraphQLQuery.newRequest().orgId("asiczen-case2").build(),new AddDeviceProjectionRoot().orgId());
+        List<String> orgId = dgsQueryExecutor.executeAndExtractJsonPath(graphQLQueryRequestFetch.serialize(),"data.devices[*].orgId");
+
+        assertThat(orgId).contains("asiczen-case2");
     }
 }
