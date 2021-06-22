@@ -30,11 +30,11 @@ type Query {
 }
 
 type Mutation {
-    addDevice(input: CreateDeviceRequest): Device!
-    importDevices(input: [CreateDeviceRequest]): [Device!]!
-    updateDevice(input: UpdateDeviceRequest): Device!
-    disableDevice(input: DisableDevice ) : String
-    deleteDevice(input: DeleteDevice) : String
+    addDevice(createDeviceRequest: CreateDeviceRequest!): Device!
+    importDevices(input: [CreateDeviceRequest!]!): [Device!]!
+    updateDevice(input: UpdateDeviceRequest!): Device!
+    disableDevice(input: DisableDevice! ) : String
+    deleteDevice(input: DeleteDevice!) : String
 }
 
 

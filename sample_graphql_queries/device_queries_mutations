@@ -1,0 +1,21 @@
+
+Query 1:
+
+{
+  devices{
+    id
+    imei
+  }
+}
+
+Mutation :
+
+mutation {
+  addDevice(createDeviceRequest:{orgId: "asiczen", imei: "12345", available: true}) {
+    id
+    orgId
+    imei
+    available
+    effectiveBeginDate
+  }
+}
