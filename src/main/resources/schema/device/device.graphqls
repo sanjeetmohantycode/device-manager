@@ -27,6 +27,7 @@ type DeviceOwner {
 
 type Query {
     devices(orgId:String): [Device]
+    organizations(orgId:String): Organization
 }
 
 type Mutation {
@@ -37,5 +38,41 @@ type Mutation {
     deleteDevice(input: DeleteDevice!) : String
 }
 
+type Organization {
+    id: ID!
+    orgId: String!
+    orgName: String!
+    orgDescription: String
+    status: Boolean
+    imageUrl: String
+    organizationDetail: OrganizationDetail
+}
+
+type OrganizationDetail {
+    id: ID!
+    orgId: String!
+    freeCode1: String
+    freeCode2: String
+    freeCode3: String
+    freeCode4: String
+    freeCode5: String
+    freeCode6: Int
+    freeCode7: Int
+    freeCode8: Int
+    freeCode9: Int
+    freeCode10: Int
+    freeCode11: Float
+    freeCode12: Float
+    freeCode14: Long
+    freeCode15: Long
+    freeCode16: BigInteger
+    freeCode17: BigInteger
+    freeCode18: BigDecimal
+    freeCode19: BigDecimal
+}
+
 
 scalar DateTime
+scalar Long
+scalar BigInteger
+scalar BigDecimal

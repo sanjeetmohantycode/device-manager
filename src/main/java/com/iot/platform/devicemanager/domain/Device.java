@@ -62,7 +62,7 @@ public class Device {
             return false;
         }
         Device that = (Device) o;
-        return java.util.Objects.equals(id, that.id) &&
+        return  java.util.Objects.equals(id, that.id) &&
                 java.util.Objects.equals(orgId, that.orgId) &&
                 java.util.Objects.equals(imei, that.imei) &&
                 java.util.Objects.equals(available, that.available) &&
