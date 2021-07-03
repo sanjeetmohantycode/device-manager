@@ -1,0 +1,20 @@
+type Device {
+    id: ID!
+    orgId: String!
+    imei: String!
+    available: Boolean
+    deviceDetail: DeviceDetail
+    deviceOwner: DeviceOwner
+    effectiveBeginDate: DateTime
+    effectiveEndDate:DateTime
+    disableDevice: Boolean
+}
+
+type DeviceDetail {
+    id: ID!
+    orgId: String!
+    deviceModel: String
+    device: Device
+    manufaureDate: DateTime
+    vendor: String
+}

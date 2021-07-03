@@ -1,0 +1,12 @@
+type Query {
+    devices(orgId:String): [Device]
+    organizations(orgId:String): Organization
+}
+
+type Mutation {
+    addDevice(createDeviceRequest: CreateDeviceRequest!): Device!
+    importDevices(input: [CreateDeviceRequest!]!): [Device!]!
+    updateDevice(input: UpdateDeviceRequest!): Device!
+    disableDevice(input: DisableDevice! ) : String
+    deleteDevice(input: DeleteDevice!) : String
+}

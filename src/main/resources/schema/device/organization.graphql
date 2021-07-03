@@ -1,0 +1,33 @@
+type Organization {
+    id: ID!
+    orgId: String!
+    orgName: String!
+    orgDescription: String
+    status: Boolean
+    imageUrl: String
+    organizationDetail: OrganizationDetail
+}
+
+type OrganizationDetail {
+    id: ID!
+    orgId: String!
+    organization: Organization
+    freeCode1: String
+    freeCode2: String
+    freeCode3: String
+    freeCode4: String
+    freeCode5: String
+    freeCode6: Int
+    freeCode7: Int
+    freeCode8: Int
+    freeCode9: Int
+    freeCode10: Int
+    freeCode11: Float
+    freeCode12: Float
+    freeCode14: Long
+    freeCode15: Long
+    freeCode16: BigInteger
+    freeCode17: BigInteger
+    freeCode18: BigDecimal
+    freeCode19: BigDecimal
+}

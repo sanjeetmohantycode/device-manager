@@ -1,0 +1,5 @@
+type DeviceOwner {
+    id: ID!
+    orgId: String!
+    deviceList: [Device]
+}
