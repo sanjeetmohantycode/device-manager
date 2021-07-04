@@ -1,0 +1,24 @@
+input CreateOrganizationRequest {
+    orgId: String!
+    orgName: String!
+    orgDescription: String
+    status:Boolean
+    imageUrl: String
+}
+
+input UpdateOrganizationRequest {
+    id: ID!
+    orgId: String!
+    imei: String!
+    available: Boolean
+}
+
+input DisableOrganization {
+    id: ID!
+    orgId: String!
+}
+
+input DeleteOrganization {
+    id: ID!
+    orgId: String!
+}

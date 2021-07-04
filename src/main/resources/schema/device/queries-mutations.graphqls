@@ -1,6 +1,8 @@
 type Query {
     devices(orgId:String): [Device]
-    organizations(orgId:String): Organization
+
+    getMyOrganization(orgId:String): Organization
+    getAllOrganizations: [Organization]
 }
 
 type Mutation {
@@ -9,4 +11,10 @@ type Mutation {
     updateDevice(input: UpdateDeviceRequest!): Device!
     disableDevice(input: DisableDevice! ) : String
     deleteDevice(input: DeleteDevice!) : String
+
+    addOrganization(creaeOrganizationReuest: CreateOrganizationRequest): Organization
+    importOrganizations(input: [CreateOrganizationRequest!]!): [Organization!]!
+    updateOrganization(input: UpdateOrganizationRequest): Organization!
+    disableOrganization(input: DisableOrganization!): String
+    deleteOrganization(input: DeleteOrganization): String
 }
