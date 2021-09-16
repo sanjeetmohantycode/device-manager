@@ -1,3 +1,4 @@
+END POINT: http://localhost:6060/graphql
 
 Query 1:
 
@@ -5,6 +6,65 @@ Query 1:
   devices{
     id
     imei
+  }
+}
+
+Query 2:
+
+{
+  devices{
+    id
+    imei
+    orgId
+	effectiveBeginDate
+    effectiveEndDate
+  }
+}
+
+
+output :
+
+{
+  "data": {
+    "devices": [
+      {
+        "id": "fe076aa4-7fd6-41dd-a2a2-9fcec0913d4c",
+        "imei": "9861927841",
+        "orgId": "asiczen-1",
+        "effectiveBeginDate": null
+      },
+      {
+        "id": "e783cead-74b3-4d1d-ace5-9921b45a6e74",
+        "imei": "9861927842",
+        "orgId": "asiczen-2",
+        "effectiveBeginDate": null
+      }
+    ]
+  }
+}
+
+Query 3:
+
+{
+  deviceList(orgId: "asiczen-1"){
+    id
+    imei
+    orgId
+		effectiveBeginDate
+  }
+}
+
+output :
+{
+  "data": {
+    "deviceList": [
+      {
+        "id": "fe076aa4-7fd6-41dd-a2a2-9fcec0913d4c",
+        "imei": "9861927841",
+        "orgId": "asiczen-1",
+        "effectiveBeginDate": null
+      }
+    ]
   }
 }
 

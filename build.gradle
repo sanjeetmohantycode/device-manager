@@ -63,3 +63,12 @@ generateJava {
 			"BigDecimal": "java.math.BigDecimal"
 	]
 }
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src/main/java'
+			srcDir 'target/generated-sources/annotations'
+		}
+	}
+}

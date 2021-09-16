@@ -1,5 +1,6 @@
 type Query {
     devices(orgId:String): [Device]
+    deviceList(orgId:String) : [Device]
 
     getMyOrganization(orgId:String): Organization
     getAllOrganizations: [Organization]
