@@ -2,6 +2,7 @@ package com.iot.platform.devicemanager.datafetchers;
 
 
 import com.example.packagename.types.CreateDeviceRequest;
+import com.example.packagename.types.UpdateDeviceRequest;
 import com.iot.platform.devicemanager.domain.Device;
 import com.iot.platform.devicemanager.service.DeviceService;
 import com.netflix.graphql.dgs.DgsComponent;
@@ -44,5 +45,10 @@ public class DevicesDataFetcher {
     @DgsMutation
     public List<Device> importDevices(@InputArgument List<CreateDeviceRequest> input) {
         return deviceService.importDevices(input);
+    }
+
+    @DgsMutation
+    public Device updateDevice(@InputArgument UpdateDeviceRequest updateDeviceRequest) {
+        return deviceService.updateDevice(updateDeviceRequest);
     }
 }

@@ -1,6 +1,7 @@
 package com.iot.platform.devicemanager.serviceimpl;
 
 import com.example.packagename.types.CreateDeviceRequest;
+import com.example.packagename.types.UpdateDeviceRequest;
 import com.iot.platform.devicemanager.domain.Device;
 import com.iot.platform.devicemanager.repositories.DeviceRepository;
 import com.iot.platform.devicemanager.service.DeviceService;
@@ -22,10 +23,7 @@ public class DeviceServiceImpl implements DeviceService {
 
     @Override
     public List<Device> getAllDevicesByOrganization(String orgId) {
-        return deviceRepository.findAll()
-                .stream()
-                .filter(device -> device.getOrgId().equalsIgnoreCase(orgId))
-                .collect(Collectors.toList());
+        return deviceRepository.findByOrgId(orgId).orElse(new ArrayList<>());
     }
 
     @Override
@@ -56,5 +54,14 @@ public class DeviceServiceImpl implements DeviceService {
         return deviceRequestList.stream().map(this::registerDevice).collect(Collectors.toList());
     }
 
+    @Override
+    public Device updateDevice(UpdateDeviceRequest updateDeviceRequest) {
+        Device device = deviceRepository.findByOrgIdAndId(updateDeviceRequest.getOrgId(), updateDeviceRequest.getId())
+                .orElseThrow(() -> new RuntimeException("No such device found"));
+        device.setImei(updateDeviceRequest.getImei());
+        device.setOrgId(updateDeviceRequest.getOrgId());
+        device.setAvailable(updateDeviceRequest.getAvailable());
 
+        return deviceRepository.save(device);
+    }
 }
