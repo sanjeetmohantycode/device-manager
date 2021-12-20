@@ -1,17 +1,11 @@
 input CreateDeviceRequest {
+    id: ID
     orgId: String!
     imei: String!
     available: Boolean
     effectiveBeginDate: DateTime
     effectiveEndDate:DateTime
     disableDevice: Boolean
-}
-
-input UpdateDeviceRequest {
-    id: ID!
-    orgId: String!
-    imei: String!
-    available: Boolean
 }
 
 input DisableDevice {
